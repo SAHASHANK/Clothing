@@ -15,6 +15,12 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
+  turbopack: {
+    resolveAlias: {
+      three: './node_modules/three/build/three.module.js',
+    },
+  },
 };
 
 export default nextConfig;

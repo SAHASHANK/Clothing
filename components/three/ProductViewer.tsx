@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import { ZoomIn, RotateCw, Sparkles, Smartphone } from 'lucide-react';
+import * as THREE from 'three';
 
 interface ProductViewerProps {
   modelUrl?: string;
@@ -22,20 +23,11 @@ export default function ProductViewer({ modelUrl, colorName }: ProductViewerProp
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    let THREE;
-    try {
-      THREE = require('three');
-    } catch (e) {
-      console.warn('Three.js failed to load dynamically');
-      setWebglSupported(false);
-      return;
-    }
-
     const container = containerRef.current;
     const canvas = canvasRef.current;
     if (!container || !canvas) return;
 
-    let scene: any, camera: any, renderer: any, mesh: any, particleSystem: any;
+    let scene: any, camera: any, renderer: any, particleSystem: any;
     let animationFrameId: number;
 
     try {
@@ -87,7 +79,6 @@ export default function ProductViewer({ modelUrl, colorName }: ProductViewerProp
       plateMesh.position.set(0, 0.25, 0.48);
       group.add(plateMesh);
 
-      mesh = group;
       meshRef.current = group;
       scene.add(group);
 
@@ -129,7 +120,7 @@ export default function ProductViewer({ modelUrl, colorName }: ProductViewerProp
       window.addEventListener('resize', handleResize);
 
       // Render loop
-      let clock = new THREE.Clock();
+      const clock = new THREE.Clock();
       const tick = () => {
         const elapsed = clock.getElapsedTime();
 

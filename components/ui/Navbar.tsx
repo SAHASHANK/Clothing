@@ -6,6 +6,21 @@ import { usePathname } from 'next/navigation';
 import { Search, ShoppingBag, X } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
 
+// Branding Block Emblem
+const BrandLogo = () => (
+  <Link href="/" className="inline-flex items-center gap-3 group">
+    <div className="bg-[#F0EDE6] text-[#0a0a0a] px-2 py-1 flex flex-col items-center justify-center font-bold tracking-tighter leading-none border border-[#F0EDE6] transition-all group-hover:bg-[#C8FF00] group-hover:border-[#C8FF00] duration-300 select-none">
+      <span className="text-[10px] tracking-[0.2em] font-extrabold -mb-0.5">N</span>
+      <span className="text-[12px] tracking-[0.1em] font-black -my-0.5">HR</span>
+      <span className="text-[10px] tracking-[0.15em] font-extrabold -mt-0.5">D.</span>
+    </div>
+    <div className="flex flex-col">
+      <span className="font-extrabold tracking-widest text-sm text-[#F0EDE6] group-hover:text-[#C8FF00] transition-colors duration-300">UNHRD.LAB</span>
+      <span className="text-[7.5px] font-mono tracking-[0.3em] text-[#888880] -mt-0.5 uppercase">Zero Gravity Drops</span>
+    </div>
+  </Link>
+);
+
 export default function Navbar() {
   const pathname = usePathname();
   const toggleCart = useCartStore((state) => state.toggleCart);
@@ -15,20 +30,6 @@ export default function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Branding Block Emblem
-  const BrandLogo = () => (
-    <Link href="/" className="inline-flex items-center gap-3 group">
-      <div className="bg-[#F0EDE6] text-[#0a0a0a] px-2 py-1 flex flex-col items-center justify-center font-bold tracking-tighter leading-none border border-[#F0EDE6] transition-all group-hover:bg-[#C8FF00] group-hover:border-[#C8FF00] duration-300 select-none">
-        <span className="text-[10px] tracking-[0.2em] font-extrabold -mb-0.5">N</span>
-        <span className="text-[12px] tracking-[0.1em] font-black -my-0.5">HR</span>
-        <span className="text-[10px] tracking-[0.15em] font-extrabold -mt-0.5">D.</span>
-      </div>
-      <div className="flex flex-col">
-        <span className="font-extrabold tracking-widest text-sm text-[#F0EDE6] group-hover:text-[#C8FF00] transition-colors duration-300">UNHRD.LAB</span>
-        <span className="text-[7.5px] font-mono tracking-[0.3em] text-[#888880] -mt-0.5 uppercase">Zero Gravity Drops</span>
-      </div>
-    </Link>
-  );
 
   return (
     <>

@@ -266,7 +266,7 @@ export default function ProductDetailPage() {
         <div className="space-y-8">
           <div>
             <span className="text-[9px] tracking-[0.3em] text-[#C8FF00] font-bold uppercase block">
-              {p.drop} // {p.category}
+              {p.drop} / {p.category}
             </span>
             <h1 className="font-display font-black text-4xl sm:text-5xl uppercase tracking-tight text-white mt-1.5 leading-none">
               {p.name}

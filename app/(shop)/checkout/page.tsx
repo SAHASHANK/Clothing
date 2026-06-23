@@ -19,13 +19,6 @@ export default function CheckoutPage() {
     clearCart
   } = useCartStore();
 
-  // Redirect if cart is empty
-  useEffect(() => {
-    if (items.length === 0 && !orderSuccess) {
-      window.location.href = '/catalog';
-    }
-  }, [items]);
-
   // Shipping form states
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -44,6 +37,13 @@ export default function CheckoutPage() {
   const [orderSuccess, setOrderSuccess] = useState(false);
   const [createdOrderId, setCreatedOrderId] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+
+  // Redirect if cart is empty
+  useEffect(() => {
+    if (items.length === 0 && !orderSuccess) {
+      window.location.href = '/catalog';
+    }
+  }, [items]);
 
   // Auto-fetch City/State based on Indian Pincode
   useEffect(() => {

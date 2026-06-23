@@ -5,6 +5,7 @@ import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { Eye, EyeOff, Lock, Mail, ShieldAlert, Globe, User, Sparkles } from 'lucide-react';
 import Link from 'next/link';
+import * as THREE from 'three';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -27,14 +28,6 @@ export default function LoginPage() {
   // Background Interactive Mesh in Three.js
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    
-    let THREE;
-    try {
-      THREE = require('three');
-    } catch (e) {
-      console.warn('Three.js not loaded yet');
-      return;
-    }
 
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -131,7 +124,7 @@ export default function LoginPage() {
 
     // Animation Loop
     let animationFrameId: number;
-    let clock = new THREE.Clock();
+    const clock = new THREE.Clock();
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef, useEffect, useState } from 'react';
+import * as THREE from 'three';
 
 export default function HeroCanvas() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -9,17 +10,6 @@ export default function HeroCanvas() {
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-
-    let THREE;
-    let OrbitControls;
-    try {
-      THREE = require('three');
-      // Require orbit controls dynamically if needed, or build custom rotation
-    } catch (e) {
-      console.warn('Three.js failed to load dynamically');
-      setWebglSupported(false);
-      return;
-    }
 
     const container = containerRef.current;
     const canvas = canvasRef.current;
@@ -127,7 +117,7 @@ export default function HeroCanvas() {
       window.addEventListener('resize', handleResize);
 
       // 6. Animation Loop
-      let clock = new THREE.Clock();
+      const clock = new THREE.Clock();
       
       const tick = () => {
         const elapsed = clock.getElapsedTime();
