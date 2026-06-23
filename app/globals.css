@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand */
+  --bg-primary: #0a0a0a;      /* near-black canvas */
+  --bg-secondary: #111111;    /* card surfaces */
+  --bg-tertiary: #171717;     /* input fields, hover states */
+  --accent: #C8FF00;          /* acid green */
+  --accent-dim: #9abf00;      /* hover state of accent */
+  --text-primary: #F0EDE6;    /* off-white body text */
+  --text-secondary: #888880;  /* muted labels */
+  --text-tertiary: #444440;   /* placeholders */
+  --border: rgba(240, 237, 230, 0.08);  /* subtle dividers */
+  --border-strong: rgba(240, 237, 230, 0.18);
+}
+
+@theme {
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+  --color-accent: var(--accent);
+  --color-accent-dim: var(--accent-dim);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-border-subtle: var(--border);
+  --color-border-strong: var(--border-strong);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Global Reset */
+html, body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* Selection style */
+::selection {
+  background-color: var(--accent);
+  color: #000000;
+}
+
+/* Custom styles for brutalist look */
+.brutalist-border {
+  border: 1px solid var(--border-strong);
+}
+
+.brutalist-border:hover {
+  border-color: var(--accent);
+}
+
+.brutalist-button {
+  background-color: var(--accent);
+  color: #000000;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--accent);
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.brutalist-button:hover {
+  background-color: transparent;
+  color: var(--accent);
+}
+
+.brutalist-input {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.brutalist-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Animated Count-up & Marquee Utility */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 20s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
